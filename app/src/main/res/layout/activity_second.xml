@@ -8,4 +8,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="buttom3"/>
+
+    <Button
+        android:id="@+id/button10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="返回数据给上一个活动" />
 </LinearLayout>

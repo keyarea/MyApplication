@@ -9,12 +9,36 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SecondActivity"></activity>
+        <activity android:name=".ThirdActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT"/>
+                <!--
+                在data标签中，我们通过android:scheme指定了数据的协议必须是http协议，这样就和浏览器一样，可以响应一个打开网页的Intent
+                -->
+                <data android:scheme="http"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".SecondActivity">
+            <intent-filter>
+
+                <!--
+                  在action标签中我们指定了当前活动可以响应net.qipo.myapplication.ACTION_START这个action
+                  而category标签则包含了一些附加信息，更精确的指明了当前活动能够响应的Intent中还可能带有的category
+                  只有action和category同时匹配上Intent中指定的action和category时，这个活动才能响应该Intent
+                -->
+                <action android:name="net.qipo.myapplication.ACTION_START" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="net.qipo.myapplication.MY_CATEGORY" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".MainActivity"
             android:label="This is MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
