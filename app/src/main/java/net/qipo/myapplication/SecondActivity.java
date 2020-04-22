@@ -43,6 +43,17 @@ public class SecondActivity extends AppCompatActivity {
             intent1.putExtra("data_result", "Hello MainActivity");
             setResult(RESULT_OK, intent1);
             finish();
+            // 但是我们并不点击按钮，而是通过按下Back键回到上一个页面呢，这样数据不就没法返回了。
+            // 这种情况，我们可以通过在活动中重写onBackPressed()方法来解决这个问题
         });
+    }
+
+    // 按下back键触发
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent();
+        intent.putExtra("data_result", "on BackPressed result");
+        setResult(RESULT_OK, intent);
+        finish();
     }
 }

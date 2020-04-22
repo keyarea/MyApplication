@@ -136,6 +136,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        // requestCode：第一个参数是我们在启动活动时传入的请求码
+        // resultCode: 第二个参数即我们在返回数据时传入的处理结果
+        // data: 第三个参数即携带着返回数据的Intent
         switch (requestCode) {
             case 1:
                 if (resultCode == RESULT_OK) {
