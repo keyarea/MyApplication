@@ -2,6 +2,7 @@ package net.qipo.myapplication;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,6 +15,9 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
+
+    // 其实该方法的参数一般情况下都是null，但是如果在活动被系统回收之前有通过onSaveInstanceState()方法来保存数据的话，这个
+    // 参数就会带有之前所保存的全部数据，我们只需要再通过响应的取值方法将数据取出即可。
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +25,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         // 打印日志
         Log.d(TAG, "onCreate execute");
+
+        // 取出活动被系统回收之前保存的数据
+        if (savedInstanceState != null) {
+            String tempData = savedInstanceState.getString("data_key");
+            Log.d(TAG, tempData);
+        }
 
 
         // 在活动中，可以通过findViewById获得到在布局文件中定义的元素,获得Button的实例
@@ -108,6 +118,20 @@ public class MainActivity extends AppCompatActivity {
             // 该方法第二个参数是请求码，用于在之后的回调中判断数据的来源，请求码只要是一个唯一值就可以。
             startActivityForResult(intent, 1);
         });
+
+        // 测试活动的声明周期
+        Button button11 = findViewById(R.id.button11);
+        button11.setOnClickListener((v) -> {
+            Intent intent = new Intent(MainActivity.this, NormalActivity.class);
+            startActivity(intent);
+        });
+
+        // 测试活动的声明周期
+        Button button12 = findViewById(R.id.button12);
+        button12.setOnClickListener((v) -> {
+            Intent intent = new Intent(MainActivity.this, DialogActivity.class);
+            startActivity(intent);
+        });
     }
 
     @Override
@@ -148,5 +172,49 @@ public class MainActivity extends AppCompatActivity {
                 break;
                 default:
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d(TAG, "onStart: ");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(TAG, "onResume: ");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(TAG, "onPause: ");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(TAG, "onStop: ");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "onDestroy: ");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d(TAG, "onRestart: ");
+    }
+
+    // 如果活动被回收，页面保存的数据怎么办？可以用这个进行数据的保存
+    @Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
+        String tempData = "Something you just typed";
+        outState.putString("data_key", tempData);
     }
 }

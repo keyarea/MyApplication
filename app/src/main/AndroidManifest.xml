@@ -9,14 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".DialogActivity"
+            android:theme="@style/Theme.AppCompat.Dialog">
+
+        </activity>
+        <activity android:name=".NormalActivity" />
         <activity android:name=".ThirdActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT"/>
-                <!--
-                在data标签中，我们通过android:scheme指定了数据的协议必须是http协议，这样就和浏览器一样，可以响应一个打开网页的Intent
-                -->
-                <data android:scheme="http"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <!-- 在data标签中，我们通过android:scheme指定了数据的协议必须是http协议，这样就和浏览器一样，可以响应一个打开网页的Intent -->
+                <data android:scheme="http" />
             </intent-filter>
         </activity>
         <activity android:name=".SecondActivity">
