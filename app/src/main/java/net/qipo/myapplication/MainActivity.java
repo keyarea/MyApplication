@@ -1,4 +1,5 @@
 package net.qipo.myapplication;
+
 import android.content.Intent;
 import android.net.Uri;
 import android.os.PersistableBundle;
@@ -143,6 +144,13 @@ public class MainActivity extends BaseActivity {
         Button button14 = findViewById(R.id.button14);
         button14.setOnClickListener((v) -> {
             Intent intent = new Intent(MainActivity.this, ThirdActivity.class);
+            startActivity(intent);
+        });
+
+        // 测试活动的启动模式
+        Button button13 = findViewById(R.id.button13);
+        button13.setOnClickListener((v) -> {
+            Intent intent = new Intent(this, LaunchModeActivity.class);
             startActivity(intent);
         });
     }
