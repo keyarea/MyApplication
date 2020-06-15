@@ -10,7 +10,7 @@ public class LaunchModeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_launch_mode);
+//        setContentView(R.layout.);
 
         Button button14 = findViewById(R.id.button14);
         button14.setOnClickListener((v) -> {

@@ -148,11 +148,11 @@ public class MainActivity extends BaseActivity {
         });
 
         // 测试活动的启动模式
-        Button button13 = findViewById(R.id.button13);
-        button13.setOnClickListener((v) -> {
-            Intent intent = new Intent(this, LaunchModeActivity.class);
-            startActivity(intent);
-        });
+//        Button button13 = findViewById(R.id.button13);
+//        button13.setOnClickListener((v) -> {
+//            Intent intent = new Intent(this, LaunchModeActivity.class);
+//            startActivity(intent);
+//        });
     }
 
     @Override
