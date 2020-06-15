@@ -15,10 +15,6 @@ android {
     // 签名配置
     signingConfigs {
         debug { // debug签名配置
-            keyAlias 'kai' // 密钥标识
-            keyPassword '8887447235' // 密钥密码
-            storePassword 'kai6014.' // 签名文件密码
-            storeFile file('/Users/kai/key')
         }
 
         release { // 在这里可以配置release版本签名信息

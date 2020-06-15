@@ -1,5 +1,4 @@
 package net.qipo.myapplication;
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.PersistableBundle;
@@ -13,7 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     private static final String TAG = "MainActivity";
 
     // 其实该方法的参数一般情况下都是null，但是如果在活动被系统回收之前有通过onSaveInstanceState()方法来保存数据的话，这个
@@ -130,6 +129,20 @@ public class MainActivity extends AppCompatActivity {
         Button button12 = findViewById(R.id.button12);
         button12.setOnClickListener((v) -> {
             Intent intent = new Intent(MainActivity.this, DialogActivity.class);
+            startActivity(intent);
+        });
+
+        // 测试启动模式standard
+        Button button13 = findViewById(R.id.button13);
+        button13.setOnClickListener((v) -> {
+            Intent intent = new Intent(MainActivity.this, MainActivity.class);
+            startActivity(intent);
+        });
+
+        // 测试在多层页面中直接退出程序
+        Button button14 = findViewById(R.id.button14);
+        button14.setOnClickListener((v) -> {
+            Intent intent = new Intent(MainActivity.this, ThirdActivity.class);
             startActivity(intent);
         });
     }
